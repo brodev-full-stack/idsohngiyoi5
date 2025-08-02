@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Intensivo - De Cero a Experto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Georgia, serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 25%, #e8f4f8 50%, #f0f8ff 75%, #f8f9ff 100%);
+            background-attachment: fixed;
+            color: #2c3e50;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(173, 216, 230, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(221, 160, 221, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: etherealFlow 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes etherealFlow {
+            0% { transform: translateX(-3px) translateY(-3px) rotate(0deg); }
+            100% { transform: translateX(3px) translateY(3px) rotate(0.3deg); }
+        }
+
+        .course-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 
+                0 25px 50px rgba(102, 126, 234, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) rotateX(3deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        .course-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbowShift 8s ease infinite;
+            text-align: center;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 2px 4px rgba(102, 126, 234, 0.2));
+        }
+
+        @keyframes rainbowShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .course-subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .intensive-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 auto 2rem;
+            display: inline-block;
+            animation: pulse 2s infinite;
+            box-shadow: 0 5px 15px rgba(238, 90, 36, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .learning-item {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .learning-item:hover {
+            transform: scale(1.02);
+            background: rgba(102, 126, 234, 0.05);
+            border-color: rgba(102, 126, 234, 0.2);
+        }
+
+        .learning-item::before {
+            content: "🚀";
+            margin-right: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #4a5568;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(245, 87, 108, 0.15) 100%);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .course-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 16px;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .info-number {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .info-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(245, 87, 108, 0.05) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .course-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .course-title {
+                font-size: 2rem;
+            }
+            
+            .learning-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="course-container">
+        <h1 class="course-title">Desarrollo Web Intensivo</h1>
+        <div style="text-align: center;">
+            <span class="intensive-badge">🔥 Curso Intensivo</span>
+        </div>
+        <p class="course-subtitle">De Cero a Experto - Domina las tecnologías web modernas con proyectos prácticos</p>
+
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-icon">🎯</span>
+                Lo que Aprenderás
+            </h2>
+            <div class="learning-grid">
+                <div class="learning-item">Crear aplicaciones web responsivas</div>
+                <div class="learning-item">Dominar frameworks de JavaScript</div>
+                <div class="learning-item">Técnicas de integración de bases de datos</div>
+                <div class="learning-item">Desarrollo y consumo de APIs</div>
+                <div class="learning-item">Estrategias modernas de despliegue</div>
+                <div class="learning-item">Optimización de rendimiento</div>
+                <div class="learning-item">Arquitectura de software escalable</div>
+                <div class="learning-item">Testing y debugging avanzado</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-icon">💡</span>
+                Descripción del Curso
+            </h2>
+            <p>Este curso intensivo te lleva desde cero hasta convertirte en un experto en desarrollo web. Aprenderás las tecnologías más demandadas del mercado mientras construyes proyectos reales que demostrarán tus habilidades profesionales. Ideal para emprendedores que quieren dominar el stack completo.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-icon">⚡</span>
+                Modalidad Intensiva
+            </h2>
+            <p>Programa acelerado diseñado para profesionales ambiciosos. Combina teoría sólida con práctica intensiva, proyectos reales y mentoría personalizada. Perfecto para estudiantes de ingeniería que buscan acelerar su carrera tech.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-icon">🏷️</span>
+                Tecnologías
+            </h2>
+            <div class="tags-container">
+                <span class="tag">HTML5 & CSS3</span>
+                <span class="tag">JavaScript ES6+</span>
+                <span class="tag">React & Next.js</span>
+                <span class="tag">Node.js & Express</span>
+                <span class="tag">MongoDB & SQL</span>
+                <span class="tag">APIs REST & GraphQL</span>
+                <span class="tag">Git & GitHub</span>
+                <span class="tag">Docker & AWS</span>
+                <span class="tag">Testing & CI/CD</span>
+                <span class="tag">TypeScript</span>
+            </div>
+        </div>
+
+        <div class="course-info">
+            <div class="info-card">
+                <div class="info-number">8</div>
+                <div class="info-label">Semanas</div>
+            </div>
+            <div class="info-card">
+                <div class="info-number">40</div>
+                <div class="info-label">Lecciones</div>
+            </div>
+            <div class="info-card">
+                <div class="info-number">12</div>
+                <div class="info-label">Proyectos</div>
+            </div>
+            <div class="info-card">
+                <div class="info-number">24/7</div>
+                <div class="info-label">Soporte</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <p class="cta-text">¿Listo para transformar tu carrera tech? Únete a cientos de estudiantes que ya han comenzado su camino de cero a experto en desarrollo web profesional.</p>
+        </div>
+    </div>
+</body>
+</html>
